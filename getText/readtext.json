@@ -1,0 +1,34 @@
+package sample;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+/**
+ * Created by jungle on 11/9/16.
+ */
+public class readtext {
+    private String src;
+    private BufferedReader files;
+
+    public readtext(String src){
+        this.src = src;
+        try {
+            FileReader file = new FileReader(src);
+            BufferedReader buff = new BufferedReader(file);
+            this.files = buff;
+        }
+        catch (FileNotFoundException ex){
+            System.out.println("NOT FOUND FILE");
+        }
+    }
+    String getText() throws IOException {
+        String fulltext = "";
+        String row;
+        while((row=files.readLine())!=null){
+            fulltext += row;
+        }
+        return fulltext;
+    }
+}
